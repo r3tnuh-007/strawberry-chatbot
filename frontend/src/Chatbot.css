@@ -1,0 +1,175 @@
+/* Página inteira em modo escuro, layout a ocupar o ecrã todo */
+.chatbot-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center; /* centra horizontalmente o conteúdo */
+  align-items: center;     /* centra verticalmente o conteúdo */
+  background: #020617;     /* fundo escuro (quase preto azul) */
+  color: #e5e7eb;          /* texto claro */
+  margin: 0;
+}
+
+/* Container principal em “modo app” de desktop, mais largo */
+.chatbot-container {
+  width: 100%;
+  max-width: 1200px;        /* limite máximo no centro do ecrã */
+  height: 100%;
+  max-height: 800px;        /* para não ficar gigante em ecrãs enormes */
+  background: #020617;      /* fundo totalmente escuro */
+  border-radius: 0;         /* sem cantos arredondados – sensação de app full */
+  box-shadow: none;         /* sem sombra tipo “cartão” */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Se quiseres mesmo full-screen sem qualquer margem, podes usar:
+.chatbot-container {
+  width: 100vw;
+  height: 100vh;
+  background: #020617;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+*/
+
+/* Header */
+.chatbot-header {
+  padding: 16px 24px;
+  background: #111827;       /* cinza muito escuro */
+  color: #f9fafb;            /* quase branco */
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+/* Área de mensagens */
+.chatbot-messages {
+  flex: 1;
+  padding: 16px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #020617;       /* fundo escuro uniforme */
+}
+
+/* Barra de scroll mais discreta (opcional) */
+.chatbot-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+
+/* Mensagem genérica */
+.message {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  word-break: break-word;
+  font-size: 0.95rem;
+}
+
+/* Mensagem do utilizador (lado direito) */
+.message-user {
+  align-self: flex-end;
+  background: #2563eb; /* azul */
+  color: #f9fafb;
+}
+
+/* Mensagem do bot (lado esquerdo) */
+.message-bot {
+  align-self: flex-start;
+  background: #1f2937; /* cinza escuro */
+  color: #e5e7eb;
+}
+
+/* “A escrever…” */
+.message-loading {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Área de input */
+.chatbot-input-area {
+  display: flex;
+  padding: 12px 16px;
+  border-top: 1px solid #1f2937;
+  gap: 8px;
+  background: #020617;
+}
+
+/* Input de texto */
+.chatbot-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: #e5e7eb;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.chatbot-input::placeholder {
+  color: #6b7280;
+}
+
+/* Botão enviar */
+.chatbot-button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Estado disabled do botão */
+.chatbot-button:disabled {
+  background: #4b5563;
+  cursor: not-allowed;
+}
+
+/* Hover/active quando está activo */
+.chatbot-button:not(:disabled):hover {
+  background: #1d4ed8;
+}
+
+.chatbot-button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+/* Responsivo: em ecrãs pequenos, ocupar praticamente tudo */
+@media (max-width: 768px) {
+  .chatbot-container {
+    max-width: 100%;
+    max-height: 100vh;
+  }
+
+  .chatbot-messages {
+    padding: 12px 12px;
+  }
+
+  .chatbot-header {
+    padding: 12px 16px;
+  }
+
+  .chatbot-input-area {
+    padding: 10px 10px;
+  }
+}
