@@ -28,6 +28,6 @@ async def chat_endpoint(request: ChatRequest):
     if "olá" in user_message.lower():
         reply = "Olá! Como posso ajudar?"
     else:
-        reply = f"Recebi a tua mensagem: '{user_message}'. Ainda estou a aprender 🙂"
+        reply = f"Recebi a tua mensagem: '{user_message}'. Ainda estou a aprender 🟢"
 
     return ChatResponse(reply=reply)
